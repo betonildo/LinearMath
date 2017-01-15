@@ -53,31 +53,18 @@ public:
         return m_rotation;
     }
 
-    inline friend Quaternion& operator*(const Quaternion& p, const Quaternion& q) {
+    inline friend Quaternion operator*(const Quaternion& p, const Quaternion& q) {
         
-        Quaternion& pq = (Quaternion&)*(new Quaternion()); //creates a reference to heap
+        Quaternion pq;
+
         Vector3 pv = p.v;
         Vector3 qv = q.v;
+
         float ps = p.s;
         float qs = q.s;
-                
-        std::cout << "pv = " << pv << LF;
-        std::cout << "ps = " << ps << LF;
 
-        std::cout << "qv = " << qv << LF;
-        std::cout << "qs = " << qs << LF;
-
-        Vector3 ps_t_qv = ps * qv;
-        Vector3 qs_t_pv = qs * pv;
-        Vector3 pv_t_qv = pv * qv;
-        pq.v = ps_t_qv + qs_t_pv + pv_t_qv;
+        pq.v = (ps * qv) + (qs * pv) + (pv * qv);
         pq.s = (ps * qs) - dot(pv, qv);
-
-        std::cout << "ps_t_qv = " << ps_t_qv << LF;
-        std::cout << "qs_t_pv = " << qs_t_pv << LF;        
-        std::cout << "pq.v = " << pq.v << LF;
-        std::cout << "pq.s = " << pq.s << LF;
-        
 
         return pq;
     }

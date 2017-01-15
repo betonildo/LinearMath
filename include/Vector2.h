@@ -1,6 +1,8 @@
 #ifndef VECTOR2_H
 #define VECTOR2_H
 
+#include <Definitions.h>
+
 struct Vector2 {
 
     float x,y;
