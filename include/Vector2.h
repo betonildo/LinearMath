@@ -5,7 +5,7 @@
 
 struct Vector2 {
 
-    float x,y;
+    float x, y;
 
     inline friend float operator*(const Vector2& u, const Vector2& v) {
         return dot(u, v);
@@ -16,9 +16,7 @@ struct Vector2 {
     }
 
     inline friend std::ostream& operator<<(std::ostream& os, const Vector2& v) {
-
         os << "[" << v.x << ", " << v.y << "]";
-
         return os;
     }
 };
