@@ -25,7 +25,7 @@ set(INCLUDE_UNITS
 
 if (COMPILE_TESTS)
     set(TRANSLATION_UNITS "${TRANSLATION_UNITS}" main.cpp)
+    add_executable(LinearMath "${TRANSLATION_UNITS}" "${INCLUDE_UNITS}")
 endif(COMPILE_TESTS)
 
 
-add_executable(LinearMath "${TRANSLATION_UNITS}" "${INCLUDE_UNITS}")

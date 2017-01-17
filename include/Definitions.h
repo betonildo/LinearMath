@@ -6,6 +6,11 @@
 #include <stdlib.h>
 #include <iostream>
 #include <cstdint>
+
+#ifndef byte
+#define byte unsigned char
+#endif
+
 #define LF "\n"
 #define PI 3.1415
 
