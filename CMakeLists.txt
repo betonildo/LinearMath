@@ -23,7 +23,7 @@ set(INCLUDE_UNITS
     external/Definitions/Definitions.h)
 
 if (COMPILE_TESTS)
-    set(TRANSLATION_UNITS "${TRANSLATION_UNITS} main.cpp")
+    set(TRANSLATION_UNITS "${TRANSLATION_UNITS}" main.cpp)
 endif(COMPILE_TESTS)
 
 
