@@ -20,7 +20,8 @@ set(INCLUDE_UNITS
     include/Vector2.h
     include/Vector3.h
     include/Vector4.h
-    external/Definitions/Definitions.h)
+    include/Debug.h
+    include/Definitions.h)
 
 if (COMPILE_TESTS)
     set(TRANSLATION_UNITS "${TRANSLATION_UNITS}" main.cpp)
