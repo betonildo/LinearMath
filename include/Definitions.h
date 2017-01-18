@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <cstdint>
+#include <math.h>
 
 #ifndef byte
 #define byte unsigned char

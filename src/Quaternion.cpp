@@ -5,17 +5,17 @@ Quaternion::Quaternion() {
 }
 
 Quaternion::Quaternion(float x, float y, float z, float w) {
-    v = Vector3(x, y, z);
+    v = Vector3(x, y, z).normalize();
     s = w;
 }
 
-Quaternion::Quaternion(const Vector3& v, float s) {
-    this->v = v;
+Quaternion::Quaternion(Vector3& v, float s) {
+    this->v = v.normalize();
     this->s = s;
 }
 
-Quaternion::Quaternion(const Vector4& v) {
-    this->v = (Vector3)(Vector3&)v;
+Quaternion::Quaternion(Vector4& v) {
+    this->v = ((Vector3)(Vector3&)v).normalize();
     s = v.w;
 }
 

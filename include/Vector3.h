@@ -10,6 +10,19 @@ struct Vector3 {
     Vector3();
     Vector3(float x, float y, float z);
     Vector3(const Vector3& v);
+
+    inline Vector3 normalize() {        
+        float mag = magnitude();
+        return Vector3(x / mag, y / mag, z / mag);
+    }
+
+    inline float magnitude() {
+        return sqrt(squaredMagnitude());
+    }
+
+    inline float squaredMagnitude() {
+        return x * x + y * y + z * z;
+    }
     
     inline friend Vector3& operator*(const Vector3& u, const Vector3& v) {
         return cross(u, v);

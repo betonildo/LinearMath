@@ -18,17 +18,18 @@ public:
 
     Quaternion();
     Quaternion(float x, float y, float z, float w);
-    Quaternion(const Vector3& v, float s);
-    Quaternion(const Vector4& v);
+    Quaternion(Vector3& v, float s);
+    Quaternion(Vector4& v);
     Quaternion(const Quaternion& q);
     ~Quaternion();
 
     inline Matrix3& getMatrix() {
         
         float* m = m_rotation();
-        float x = v.x;
-        float y = v.y;
-        float z = v.z;
+        Vector3 normalized = v.normalize();
+        float x = normalized.x;
+        float y = normalized.y;
+        float z = normalized.z;
         float w = s;
         float x_squared = x * x;
         float y_squared = y * y;
