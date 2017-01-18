@@ -2,6 +2,7 @@
 #define MATRIX3_H
 
 #include <Definitions.h>
+#include <CustomTypes.h>
 
 class Matrix3 {
 
