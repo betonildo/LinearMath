@@ -64,7 +64,7 @@ public:
         float ps = p.s;
         float qs = q.s;
 
-        pq.v = (ps * qv) + (qs * pv) + (pv * qv);
+        pq.v = (ps * qv) + (qs * pv) + cross(pv, qv);
         pq.s = (ps * qs) - dot(pv, qv);
 
         return pq;

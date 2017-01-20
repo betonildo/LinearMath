@@ -24,8 +24,8 @@ struct Vector3 {
         return x * x + y * y + z * z;
     }
     
-    inline friend Vector3& operator*(const Vector3& u, const Vector3& v) {
-        return cross(u, v);
+    inline friend float operator*(const Vector3& u, const Vector3& v) {
+        return dot(u, v);
     }
 
     inline friend Vector3& cross(const Vector3& u, const Vector3& v) {
