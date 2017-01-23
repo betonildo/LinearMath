@@ -14,8 +14,13 @@ private:
     };
     
 public:
-    Matrix3();
-    ~Matrix3();
+    inline Matrix3() {
+
+    }
+
+    inline ~Matrix3() {
+        
+    }
 
     inline float* operator[](byte index) {
         return &ia[(index << 1) + index];

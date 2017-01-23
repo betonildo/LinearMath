@@ -25,7 +25,7 @@ struct Vector2 {
     }
 
     inline float squaredMagnitude() {
-        return x * x + y * y;
+        return dot(*this, *this);
     }
 
     inline friend float operator*(const Vector2& u, const Vector2& v) {
@@ -36,8 +36,14 @@ struct Vector2 {
         return u.x * v.x + u.y * v.y;
     }
 
-    inline friend Vector2 opeartor+(const Vector2& u, const Vector2& v) {
+    inline friend Vector2 operator+(Vector2& u, const Vector2& v) {
         return Vector2(u.x + v.x, u.y + v.y);
+    }
+
+    inline Vector2& operator+=(const Vector2& v) {
+        x += v.x;
+        y += v.y;
+        return *this;
     }
 
     inline friend Vector2 operator*(const float& f, const Vector2& u) {

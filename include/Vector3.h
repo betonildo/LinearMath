@@ -5,11 +5,27 @@
 
 struct Vector3 {
 
-    float x, y, z;
+    union {
+        struct {
+            float x, y, z;
+        };
+        __m128 _sse_var;
+    };
+    
 
-    Vector3();
-    Vector3(float x, float y, float z);
-    Vector3(const Vector3& v);
+    inline Vector3() {
+
+    }
+
+    inline Vector3(float x, float y, float z) {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+    }
+
+    inline Vector3(const Vector3& v) {
+        (*this) = v;
+    }
 
     inline Vector3 normalize() {        
         float mag = magnitude();
@@ -28,6 +44,10 @@ struct Vector3 {
         return dot(u, v);
     }
 
+    inline friend float dot(const Vector3& u, const Vector3& v) {
+        return u.x * v.x + u.y * v.y + u.z * v.z;
+    }
+
     inline friend Vector3& cross(const Vector3& u, const Vector3& v) {
         
         Vector3& r = (Vector3&)*(new Vector3());
@@ -37,10 +57,6 @@ struct Vector3 {
         r.z = u.x * v.y - u.y * v.x;
 
         return r;
-    }
-
-    inline friend float dot(const Vector3& u, const Vector3& v) {
-        return u.x * v.x + u.y * v.y + u.z * v.z;
     }
 
     inline friend Vector3& operator*(const Vector3& u, const float& f) {

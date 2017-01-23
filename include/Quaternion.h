@@ -16,12 +16,33 @@ public:
     Vector3 v;
     float s;   
 
-    Quaternion();
-    Quaternion(float x, float y, float z, float w);
-    Quaternion(Vector3& v, float s);
-    Quaternion(Vector4& v);
-    Quaternion(const Quaternion& q);
-    ~Quaternion();
+    inline Quaternion() {
+
+    }
+
+    inline Quaternion(float x, float y, float z, float w) {
+        v = Vector3(x, y, z).normalize();
+        s = w;
+    }
+
+    inline Quaternion(Vector3& v, float s) {
+        this->v = v.normalize();
+        this->s = s;
+    }
+
+    inline Quaternion(Vector4& v) {
+        this->v = ((Vector3)(Vector3&)v).normalize();
+        s = v.w;
+    }
+
+    inline Quaternion(const Quaternion& q) {
+        (*this) = q;
+    }
+
+
+    inline ~Quaternion() {
+        
+    }
 
     inline Matrix3& getMatrix() {
         

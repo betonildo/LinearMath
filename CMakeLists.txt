@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 2.6)
 
 project(LinearMath)
 
-set(CMAKE_CXX_FLAGS " -std=c++11 ")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -msse -Wall -std=c++11 ")
 
 #Add "include" folder to include into final build system
 # Include Unity definitions
@@ -21,6 +21,10 @@ add_executable(LinearMath "${TRANSLATION_UNITS}" "${INCLUDE_UNITS}")
 set(${PROJECT_NAME}_INCLUDE_DIRS 
     ${PROJECT_SOURCE_DIR}/include
     ${UnityDefinitions_INCLUDE_DIRS}
+    CACHE INTERNAL "${PROJECT_NAME}: Include Directories" FORCE)
+
+set(${PROJECT_NAME}_INCLUDE_UNITS
+    ${INCLUDE_UNITS}
     CACHE INTERNAL "${PROJECT_NAME}: Include Directories" FORCE)
 
 
