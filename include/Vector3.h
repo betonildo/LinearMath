@@ -9,7 +9,10 @@ struct Vector3 {
         struct {
             float x, y, z;
         };
+        
+        #ifdef USE_SSE
         __m128 _sse_var;
+        #endif
     };
     
 

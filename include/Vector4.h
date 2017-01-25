@@ -10,9 +10,29 @@ struct Vector4 {
         struct {
             float x, y, z, w;
         };
+
+        #ifdef USE_SSE
         __m128 _sse_var;
+        #endif        
     };
-    
+
+    inline Vector4() {
+
+    }
+    inline Vector4(const Vector4& v) {
+        memcpy(this, &v, sizeof(Vector4));
+    }
+
+    inline Vector4(float x, float y, float z, float w) {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+        this->w = w;
+    }
+
+    inline Vector4(float xyzw[4]) {
+        memcpy(this, xyzw, sizeof(Vector4));
+    }
 
     inline operator Vector3&() {
         return *this;
@@ -52,8 +72,7 @@ struct Vector4 {
         #ifdef USE_SSE
             //__declspec(align(16)) float A[]={f, f, f, f};
             v._sse_var = _mm_set_ps(f, f, f, f);// _mm_load_ps(&A[0]);
-            v._sse_var = _mm_mul_ps(v._sse_var, u._sse_var);
-            
+            v._sse_var = _mm_mul_ps(v._sse_var, u._sse_var);            
             
         #else
             v.x = u.x * f;
@@ -71,6 +90,22 @@ struct Vector4 {
 
     inline friend float dot(const Vector4& u, const Vector4& v) {
         return u.x * v.x + u.y * v.y + u.z * v.z + u.w * v.w;
+    }
+
+    inline Vector4 operator+=(const Vector4& v) {
+        *this = (*this) + v;
+        return *this;
+    }
+
+    inline friend Vector4 operator+(const Vector4& u, const Vector4& v) {
+        return Vector4({u.x + v.x, u.y + v.y, u.z + v.z, u.w + v.w});
+    }
+
+    inline friend bool operator==(const Vector4& u, const Vector4& v) {
+        return (abs(u.x - v.x) <= PRECISION && 
+                abs(u.y - v.y) <= PRECISION &&
+                abs(u.z - v.z) <= PRECISION &&
+                abs(u.w - v.w) <= PRECISION);
     }
 
     inline friend std::ostream& operator<<(std::ostream& os, const Vector4& v) {
