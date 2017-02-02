@@ -65,7 +65,7 @@ struct Vector4 {
         return *this;
     }
 
-    inline friend Vector4 operator*(const Vector4& u, const __declspec(align(16)) float& f) {
+    inline friend Vector4 operator*(const Vector4& u, const float& f) {
         
         Vector4 v;
 

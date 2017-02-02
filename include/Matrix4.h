@@ -3,6 +3,7 @@
 
 #define DEBUG
 #include <Definitions.h>
+#include <Debug.h>
 #include <Vector4.h>
 
 class Matrix4 {
