@@ -1,7 +1,7 @@
 #ifndef MATRIX3_H
 #define MATRIX3_H
 
-#include <Definitions.h>
+#include "linearmath_local_definitions.h"
 #include <CustomTypes.h>
 
 class Matrix3 {

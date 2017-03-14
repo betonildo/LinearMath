@@ -1,7 +1,7 @@
 #ifndef QUATERNION_H
 #define QUATERNION_H
 
-#include <Definitions.h>
+#include "linearmath_local_definitions.h"
 #include <Matrix3.h>
 #include <Vector4.h>
 #include <Vector3.h>

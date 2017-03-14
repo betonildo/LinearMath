@@ -1,7 +1,7 @@
 #ifndef VECTOR2_H
 #define VECTOR2_H
 
-#include <Definitions.h>
+#include "linearmath_local_definitions.h"
 
 struct Vector2 {
 
