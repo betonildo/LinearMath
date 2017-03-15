@@ -75,6 +75,10 @@ public:
         return m_2d[rowIdx][colIdx];
     }
 
+    inline float* operator()() {
+        return m_1d;
+    }
+
     inline friend Matrix4 operator*(const Matrix4& m1, const Matrix4& m2) {
         
         Matrix4 mr;
