@@ -23,6 +23,15 @@ public:
 
     }
 
+    inline Matrix4(float d) {
+        clear();
+
+        m_2d[0][0] = d;
+        m_2d[1][1] = d;
+        m_2d[2][2] = d;
+        m_2d[3][3] = d;
+    }
+
     inline Matrix4(float matrix[16]) {
         memcpy(m_1d, matrix, sizeof(float) * 16);
     }
