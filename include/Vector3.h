@@ -95,6 +95,24 @@ struct Vector3 {
         return r;
     }
 
+    inline friend Vector3 operator-(const Vector3& u, const Vector3& v) {
+        
+        Vector3 r;
+        
+        r.x = u.x - v.x;
+        r.y = u.y - v.y;
+        r.z = u.z - v.z;
+        
+        return r;
+    }
+
+    inline Vector3& operator-() {
+        x = -x;
+        y = -y;
+        z = -z;
+        return *this;
+    }
+
     inline Vector3& operator=(const Vector3& v) {
 
         x = v.x;

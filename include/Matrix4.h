@@ -102,6 +102,20 @@ public:
                 m1.m_vecrows[3] == m2.m_vecrows[3]);
     }
 
+    inline void setTranslation(const Vector3& position) {
+        
+        m_2d[0][3] += position.x;
+        m_2d[1][3] += position.y;
+        m_2d[2][3] += position.z;
+    }
+
+    inline void setScale(const Vector3& scale) {
+        
+        m_2d[0][0] *= scale.x;
+        m_2d[1][1] *= scale.y;
+        m_2d[2][2] *= scale.z;
+    }
+
     inline friend std::ostream& operator<<(std::ostream& os, const Matrix4& m) {
         
         os << m.m_vecrows[0] << "\n";
@@ -110,6 +124,24 @@ public:
         os << m.m_vecrows[3] << "\n";
 
         return os;
+    }
+
+    inline static Matrix4 lookAt(Vector3 eye, Vector3 target, Vector3 up) {
+
+        Vector3 vz = (eye - target).normalize();
+        Vector3 vx = cross(up, vz).normalize();
+        // vy doesn't need to be normalized because it's a cross
+        // product of 2 normalized vectors
+        Vector3 vy = cross(vz, vx);
+        float matrix[] = {
+            vx.x, vx.y, vx.z, 0,
+            vy.x, vy.y, vy.z, 0,
+            vz.x, vz.y, vz.z, 0,
+            -dot(vx, eye), -dot(vy, eye), -dot(vz, eye), 1,
+        };
+
+        Matrix4 inverseViewMatrix(matrix);
+        return inverseViewMatrix;
     }
 
     inline static Matrix4 orthoProjection(float left, float right, float bottom, float top, float Znear, float Zfar) {

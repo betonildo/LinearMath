@@ -9,5 +9,9 @@ int main(int argc, char** argv) {
 
 	std::cout << m1;
 
+	Matrix4 m2 = Matrix4::lookAt(Vector3(0, 0, 0), Vector3(1, 0, 0), Vector3(0, 1, 0));
+
+	std::cout << m2;
+
 	return 0;
 }
