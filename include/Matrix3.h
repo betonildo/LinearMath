@@ -2,7 +2,6 @@
 #define MATRIX3_H
 
 #include "linearmath_local_definitions.h"
-#include <CustomTypes.h>
 
 class Matrix3 {
 
