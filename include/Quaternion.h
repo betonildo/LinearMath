@@ -9,7 +9,7 @@
 class Quaternion {
 
 private:
-    Matrix3 m_rotation;
+    Matrix4 m_rotation;
 
 public:
 
@@ -44,8 +44,9 @@ public:
         
     }
 
-    inline Matrix3& getMatrix() {
+    inline Matrix4& getMatrix() {
         
+        m_rotation.turnIdentity();
         float* m = m_rotation();
         Vector3 normalized = v.normalize();
         float x = normalized.x;
