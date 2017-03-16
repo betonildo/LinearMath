@@ -108,6 +108,14 @@ public:
         return v;
     }
 
+    inline Matrix4& operator=(const Matrix4& mo) {
+        m_vecrows[0] = mo.m_vecrows[0];
+        m_vecrows[1] = mo.m_vecrows[1];
+        m_vecrows[2] = mo.m_vecrows[2];
+        m_vecrows[3] = mo.m_vecrows[3];
+        return *this;
+    }
+
     inline friend bool operator==(const Matrix4& m1, const Matrix4& m2) {
         return (m1.m_vecrows[0] == m2.m_vecrows[0] &&
                 m1.m_vecrows[1] == m2.m_vecrows[1] &&
